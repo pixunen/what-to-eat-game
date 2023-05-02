@@ -1,4 +1,9 @@
-import './styles/global.css'
+import '@styles/global.css'
+
+export const metadata = {
+  title: 'What to Eat?',
+  description: 'Make eating easy',
+}
 
 export default function RootLayout({
   children,
@@ -6,13 +11,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
+    <html lang="en" className='h-screen'>
+      <body className='h-screen'>
+        {children}
+      </body>
     </html>
   )
 }
