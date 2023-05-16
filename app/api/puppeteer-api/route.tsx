@@ -6,7 +6,8 @@ export async function GET(request: Request) {
     const city = searchParams.get("city");
     let browser;
     try {
-        console.log("starting scrappng")
+        console.log("starting scrapping");
+        console.time();
         browser = await puppeteer.connect({
             browserWSEndpoint: `wss://${process.env.BRIGHTDATA_AUTH}@zproxy.lum-superproxy.io:9222`,
         });
@@ -14,7 +15,7 @@ export async function GET(request: Request) {
         const page = await browser.newPage();
         page.setDefaultNavigationTimeout(2 * 60 * 1000);
         await page.goto(`https://wolt.com/fi/fin/${city}/restaurants`, { waitUntil: 'networkidle0' });
-
+        console.log("connection established..")
         const selector = ".sc-c363de38-1 .sc-c6b178e0-0";
 
         await page.waitForSelector(selector);
@@ -39,7 +40,8 @@ export async function GET(request: Request) {
             }
             return foodArray;
         }, selector);
-
+        console.log("Returning results..")
+        console.timeEnd();
         return NextResponse.json({ foodItems });
 
     } catch (error) {
