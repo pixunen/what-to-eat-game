@@ -3,7 +3,7 @@ import { WoltFood } from '../types/WoltFood';
 
 async function getDataFromWolt(city: string): Promise<WoltFood[] | undefined> {
     try {
-        const res = await fetch(`http://localhost:3000/api/puppeteer-api/?city=${city}`, { next: { revalidate: 3600 } });
+        const res = await fetch(`https://what-to-eat-game.vercel.app/api/puppeteer-api/?city=${city}`, { next: { revalidate: 3600 } });
         const data = await res.json();
         return data.foodItems;
     } catch (error) {
