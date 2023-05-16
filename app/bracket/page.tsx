@@ -6,13 +6,14 @@ import Match from "./match/page";
 import Winner from "./winner/page";
 
 const Bracket = (props: any) => {
-  const [queue, setQueue] = useState<WoltFood[]>(props.foods);
+  const foods = props.foods as WoltFood[]
+  const [queue, setQueue] = useState<WoltFood[]>(foods);
   const [currentPair, setCurrentPair] = useState<WoltFood[]>([]);
 
   useEffect(() => {
-    if (queue.length >= 2) {
+    if (queue?.length >= 2) {
       setCurrentPair([queue[0], queue[1]]);
-    } else if (queue.length === 1) {
+    } else if (queue?.length === 1) {
       setCurrentPair([queue[0]]);
     }
   }, [queue]);
@@ -25,7 +26,7 @@ const Bracket = (props: any) => {
     });
   };
 
-  if (queue.length === 1 && currentPair.length === 1) {
+  if (queue?.length === 1 && currentPair?.length === 1) {
     return <Winner food={queue[0]} />;
   }
 
