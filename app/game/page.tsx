@@ -12,10 +12,10 @@ async function getDataFromWolt(city: string): Promise<WoltFood[] | undefined> {
 }
 
 export default async function Game() {
-
     const woltData = await getDataFromWolt('lahti');
     let number = 0;
     let foods: WoltFood[] = [];
+    
     if (woltData) {
         foods = woltData.map((result: any) => ({
             id: number++,
