@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
+    serverActions: true,
+    serverComponentsExternalPackages: ["puppeteer-core"],
   },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 'imageproxy.wolt.com',
         port: '',
         pathname: '/**',
       },

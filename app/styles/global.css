@@ -1,9 +1,3 @@
-:root {
-    background-color: #323538;
-    color: #f2f2f2;
-}
-
-img {
-    width: 20%;
-    height: auto;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
