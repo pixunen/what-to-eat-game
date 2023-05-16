@@ -3,7 +3,7 @@ import { WoltFood } from '../types/WoltFood';
 
 async function getDataFromWolt(city: string): Promise<WoltFood[] | undefined> {
     try {
-        const res = await fetch(`https://what-to-eat-game.vercel.app/api/puppeteer-api/?city=${city}`, { next: { revalidate: 3600 } });
+        const res = await fetch(`${process.env.FETCH_URL}api/puppeteer-api/?city=${city}`, { next: { revalidate: 3600 } });
         const data = await res.json();
         return data.foodItems;
     } catch (error) {
@@ -15,7 +15,7 @@ export default async function Game() {
     const woltData = await getDataFromWolt('lahti');
     let number = 0;
     let foods: WoltFood[] = [];
-    
+
     if (woltData) {
         foods = woltData.map((result: any) => ({
             id: number++,
@@ -24,13 +24,21 @@ export default async function Game() {
             image: result.image,
             href: result.href
         }));
-    }
-
-    return (
-        <div>
-            <div className="flex justify-center items-center">
-                <Bracket foods={foods} />
+        return (
+            <div>
+                <div className="flex justify-center items-center">
+                    <Bracket foods={foods} />
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div>
+                <div className="flex flex-col justify-center items-center">
+                    <h1>Nothing was found from Wolt</h1>
+                    <a href="https://wolt.com/" className='underline'>Go check yourself</a>
+                </div>
+            </div>
+        )
+    }
 }

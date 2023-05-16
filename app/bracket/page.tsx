@@ -5,9 +5,8 @@ import { WoltFood } from "../types/WoltFood";
 import Match from "./match/page";
 import Winner from "./winner/page";
 
-const Bracket = (input: any) => {
-  const foods = input as WoltFood[];
-  const [queue, setQueue] = useState<WoltFood[]>(foods);
+const Bracket = (props: any) => {
+  const [queue, setQueue] = useState<WoltFood[]>(props.foods);
   const [currentPair, setCurrentPair] = useState<WoltFood[]>([]);
 
   useEffect(() => {

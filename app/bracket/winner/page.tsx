@@ -2,8 +2,8 @@ import { WoltFood } from "@/app/types/WoltFood";
 import Image from "next/image"
 import Link from "next/link";
 
-const Winner = (input: any) => {
-    const food = input as WoltFood;
+const Winner = (props: any) => {
+    const food = props.food as WoltFood;
     const baseUrl = 'https://wolt.com';
 
     return (
