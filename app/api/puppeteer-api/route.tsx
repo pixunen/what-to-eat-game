@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     let browser;
     try {
         console.log("starting scrapping");
-        console.time();
+        console.time('scrapping');
         browser = await puppeteer.connect({
             browserWSEndpoint: `wss://${process.env.BRIGHTDATA_AUTH}@zproxy.lum-superproxy.io:9222`,
         });
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
             return foodArray;
         }, selector);
         console.log("Returning results..")
-        console.timeEnd();
+        console.timeEnd('scrapper');
         return NextResponse.json({ foodItems });
 
     } catch (error) {

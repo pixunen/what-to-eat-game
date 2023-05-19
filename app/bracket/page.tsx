@@ -33,7 +33,7 @@ const Bracket = (props: any) => {
   return (
     <div className="flex flex-row max-w-xl gap-10">
       {currentPair.map((food) => (
-        <div key={food.id} onClick={() => pickWinner(food)} className='transition ease-in-out delay-150 hover:scale-110'>
+        <div key={food.id} onClick={() => pickWinner(food)} className='lg:transition lg:ease-in-out lg:delay-150 lg:hover:scale-110'>
           <Match food={food} />
         </div>
       ))}
