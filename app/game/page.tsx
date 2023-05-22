@@ -12,6 +12,7 @@ import puppeteer from 'puppeteer-core';
 //     }
 // }
 
+// This was implemented in api/puppeteer-api/ but vercel functions had too small timeout
 async function getDataFromWolt(city: string) {
     let browser;
     try {
