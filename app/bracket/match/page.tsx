@@ -11,6 +11,7 @@ const Match = (props: any) => {
         src={food?.image} 
         alt="image of the food" 
         className="h-64 w-full object-cover sm:h-80 lg:h-96"
+        priority={true}
       ></Image>
       <h3 className="mt-4 text-lg font-bold text-gray-900 sm:text-xl">
           {food?.name}
