@@ -1,4 +1,4 @@
-import '@styles/global.css'
+import './global.css'
 import Link from 'next/link'
 
 export const metadata = {

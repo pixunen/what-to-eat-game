@@ -1,9 +1,9 @@
-import { WoltFood } from "@/app/types/WoltFood";
+
+import { WoltFood } from "@/lib/WoltFood";
 import Image from "next/image"
 import Link from "next/link";
 
-const Winner = (props: any) => {
-    const food = props.food as WoltFood;
+const Winner = ({food}: {food: WoltFood}) => {
     const baseUrl = 'https://wolt.com';
 
     return (

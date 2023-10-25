@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { WoltFood } from "../types/WoltFood";
+import { WoltFood } from "../../lib/WoltFood";
 import Match from "./match/page";
 import Winner from "./winner/page";
 
