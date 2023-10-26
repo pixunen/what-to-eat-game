@@ -8,7 +8,7 @@ import InputForm from '@/components/InputForm';
 
 async function getDataFromWolt(city: string): Promise<WoltFood[] | undefined> {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}api/puppeteer-api`, {
+        const res = await fetch(`api/puppeteer-api`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
