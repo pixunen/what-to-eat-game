@@ -7,10 +7,6 @@ export async function POST(request: NextRequest) {
     
     let browser;
     try {
-
-        // browser = await puppeteer.connect({
-        //     browserWSEndpoint: `wss://${process.env.NEXT_PUBLIC_BRIGHTDATA_AUTH}@zproxy.lum-superproxy.io:9222`,
-        // });
         browser = await puppeteer.launch({headless: 'new', executablePath: executablePath('chrome')});
 
         const page = await browser.newPage();

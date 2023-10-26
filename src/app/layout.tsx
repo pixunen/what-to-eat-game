@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='h-screen'>
-      <body className='h-screen p-2'>
+    <html lang="en">
+      <body>
         <div className="flex flex-col justify-center items-center m-0 p-8 pb-20">
           <h1 className='text-4xl font-black'>What to Eat?</h1>
           <Link href='/'>

@@ -1,9 +1,7 @@
-'use client'
-
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Form, useForm } from "react-hook-form"
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { useForm } from "react-hook-form"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -11,7 +9,7 @@ const formSchema = z.object({
     city: z.string().min(2).max(50),
 })
 
-export default function InputForm({onSubmitHandler}: { onSubmitHandler: (e: string) => void}) {
+export default function InputForm({ onSubmitHandler } : { onSubmitHandler: (e: string) => void}) {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -25,7 +23,7 @@ export default function InputForm({onSubmitHandler}: { onSubmitHandler: (e: stri
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col w-full">
                 <FormField
                     control={form.control}
                     name="city"

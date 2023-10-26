@@ -1,7 +1,8 @@
 import { WoltFood } from "@/lib/WoltFood";
 import Image from "next/image"
 
-const Match = ({ food }: { food: WoltFood }) => {
+const Match = (props:any) => {
+  const food = props.food as WoltFood
   return (
     <div className="block">
       <Image
@@ -11,7 +12,7 @@ const Match = ({ food }: { food: WoltFood }) => {
         alt="image of the food"
         className="h-64 w-full object-cover sm:h-80 lg:h-96"
         placeholder="blur"
-        blurDataURL="/placeholder-600x800.png"
+        blurDataURL="/placeholder.png"
         priority={true}
       />
       <h3 className="mt-4 text-lg font-bold text-gray-900 sm:text-xl">

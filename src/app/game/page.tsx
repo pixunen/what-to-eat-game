@@ -1,6 +1,6 @@
 'use client'
 
-import Bracket from '../bracket/page';
+import Bracket from '../../components/bracket/bracket';
 import { WoltFood } from '../../lib/WoltFood';
 import { useState } from 'react';
 import Loading from '../loading';
@@ -25,18 +25,20 @@ async function getDataFromWolt(city: string): Promise<WoltFood[] | undefined> {
 
 export default function Game() {
     const [woltData, setWoltData] = useState<WoltFood[]>()
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const [city, setCity] = useState<string>('lahti')
 
     const getData = async (city: string) => {
         setLoading(true);
+        setCity(city)
         const foods = await getDataFromWolt(city)
         setWoltData(foods)
-        setLoading(false);
+        setLoading(false)
     }
 
     return (
         <div className="flex items-center justify-center">
-            <div className="flex flex-col">
+            <div>
                 {loading ? (
                     <Loading />
                 ) : !woltData ? (
@@ -62,7 +64,7 @@ export default function Game() {
                     ) : (
                         <div className="flex flex-col justify-center items-center">
                             <h1>Nothing was found from Wolt</h1>
-                            <a href="https://wolt.com/" className='underline'>Go check yourself</a>
+                            <a href={`https://wolt.com/fi/fin/${city.toLowerCase()}/restaurants`} className='underline'>Go check yourself</a>
                         </div>
                     )
                 )}
