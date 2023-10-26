@@ -11,17 +11,16 @@ export async function POST(request: NextRequest) {
         })
 
         const page = await browser.newPage();
-        page.setDefaultNavigationTimeout(2 * 60 * 1000);
+        page.setDefaultNavigationTimeout(10 * 1000);
         await page.goto(`https://wolt.com/fi/fin/${city.toLowerCase()}/restaurants`, { waitUntil: 'domcontentloaded' });
 
         const selector = ".sc-32037cfe-0";
 
         await page.waitForSelector(selector);
         const elements = await page.evaluate((selector) => {
-            const elements = document.querySelectorAll(selector);
-            return elements;
+            return document.querySelectorAll(selector);
         }, selector);
-
+        console.log(`${elements}`)
         return NextResponse.json({ elements });
 
     } catch (error) {
