@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import puppeteer from 'puppeteer-core';
-import { executablePath } from 'puppeteer-core'
 
 export async function POST(request: NextRequest) {
     const { city } = await request.json()
     
     let browser;
     try {
-        browser = await puppeteer.launch({headless: 'new', executablePath: executablePath('chrome')});
+        browser = await puppeteer.connect({
+            browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.API_TOKEN}`,
+        })
 
         const page = await browser.newPage();
         page.setDefaultNavigationTimeout(2 * 60 * 1000);
